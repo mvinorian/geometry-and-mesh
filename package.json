@@ -1,0 +1,14 @@
+{
+  "name": "grafkom-geometry-and-mesh",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "npx vite"
+  },
+  "dependencies": {
+    "three": "^0.152.2"
+  },
+  "devDependencies": {
+    "vite": "^4.3.8"
+  }
+}

@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const geometry = new THREE.ConeGeometry( 5, 20, 32 ); 
-const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00, wireframe: true} );
 const cone = new THREE.Mesh(geometry, material ); scene.add( cone );
 
 camera.position.setZ(35);

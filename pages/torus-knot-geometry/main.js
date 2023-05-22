@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 ); 
-const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); 
+const material = new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } ); 
 const torusKnot = new THREE.Mesh( geometry, material ); scene.add( torusKnot );
 
 camera.position.setZ(45);

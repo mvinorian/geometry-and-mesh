@@ -9,12 +9,11 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const geometry = new THREE.ConeGeometry( 5, 20, 32 ); 
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+const cone = new THREE.Mesh(geometry, material ); scene.add( cone );
 
-camera.position.setZ(5);
+camera.position.setZ(35);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -23,9 +22,9 @@ container.appendChild(renderer.domElement);
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotateX(0.01);
-  cube.rotateY(0.005);
-  cube.rotateZ(0.015);
+  cone.rotateX(0.01);
+  cone.rotateY(0.005);
+  cone.rotateZ(0.015);
 
   renderer.render(scene, camera);
 }

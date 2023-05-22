@@ -9,12 +9,31 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const length = 12, width = 8;
 
-camera.position.setZ(5);
+const shape = new THREE.Shape();
+shape.moveTo( 0,0 );
+shape.lineTo( 0, width );
+shape.lineTo( length, width );
+shape.lineTo( length, 0 );
+shape.lineTo( 0, 0 );
+
+const extrudeSettings = {
+	steps: 2,
+	depth: 16,
+	bevelEnabled: true,
+	bevelThickness: 1,
+	bevelSize: 1,
+	bevelOffset: 0,
+	bevelSegments: 1
+};
+
+const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+const material = new THREE.MeshBasicMaterial( { color: 0x90e0ef, wireframe: true } );
+const extrude = new THREE.Mesh( geometry, material ) ;
+scene.add( extrude );
+
+camera.position.setZ(50);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -23,9 +42,9 @@ container.appendChild(renderer.domElement);
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotateX(0.01);
-  cube.rotateY(0.005);
-  cube.rotateZ(0.015);
+  extrude.rotateX(0.01);
+  extrude.rotateY(0.005);
+  extrude.rotateZ(0.015);
 
   renderer.render(scene, camera);
 }
